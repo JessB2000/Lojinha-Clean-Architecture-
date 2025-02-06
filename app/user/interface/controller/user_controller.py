@@ -6,6 +6,7 @@ from app.user.user_cases.user_register import RegisterUserUseCase
 from app.user.user_cases.user_update import UpdateUserUseCase
 from app.user.user_cases.user_delete import DeleteUserUseCase
 from app.user.user_cases.user_login import LoginUserUseCase
+from app.infra.web.dependencies import get_current_user
 
 router = APIRouter()
 
@@ -25,9 +26,18 @@ def update_user(user_id: int, user: User, db: Session = Depends(db_get)):
 
 
 @router.delete("/users/{user_id}")
-def delete_user(user_id: int, db: Session = Depends(db_get)):
+def delete_user(
+    user_id: int,
+    db: Session = Depends(db_get),
+    current_user=Depends(get_current_user)
+):
     delete_use_case = DeleteUserUseCase(db)
-    return delete_use_case.user_delete(user_id)
+
+    return delete_use_case.user_delete(
+        user_id=user_id,
+        request_user_id=current_user.id,
+        request_user_role=current_user.role
+    )
 
 
 @router.post("/login")
