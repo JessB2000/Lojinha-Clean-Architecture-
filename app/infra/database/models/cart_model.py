@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, Enum
 from sqlalchemy.ext.declarative import declarative_base
-from app.entities.user import UserRole
+from app.user.entity.user import UserRole
 
 Base = declarative_base()
 
