@@ -1,16 +1,20 @@
-from sqlalchemy import Column, Integer, String, Boolean, Enum
+from sqlalchemy import Column, Integer, String, Boolean, Float, Enum
 from sqlalchemy.ext.declarative import declarative_base
-from app.user.entity.user import UserRole
+from sqlalchemy.orm import relationship
+from app.infra.enum.store_enum import ProductCategory
 
 Base = declarative_base()
 
 
-class UserModel(Base):
-    __tablename__ = "users"
+class ProductModel(Base):
+    __tablename__ = "products"
 
     id = Column(Integer, primary_key=True, index=True)
-    type_user = Column(Enum(UserRole), default=UserRole.REGULAR)
-    username = Column(String(50), nullable=False, unique=True)
-    email = Column(String, nullable=False, unique=True)
-    password = Column(String, nullable=False)
+    name = Column(String(100), nullable=False)
+    description = Column(String(255), nullable=True)
+    price = Column(Float, nullable=False)
+    qt_stock = Column(Integer, default=0)
     active = Column(Boolean, default=True)
+    category = Column(Enum(ProductCategory), nullable=False)
+
+    cart_items = relationship("CartItem", back_populates="product")
