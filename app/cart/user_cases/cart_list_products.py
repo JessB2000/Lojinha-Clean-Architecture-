@@ -8,7 +8,7 @@ class ViewCartUseCase:
     def __init__(self, db: Session):
         self.db = db
 
-    def viewCart(self, user_id: int):
+    def view_cart(self, user_id: int):
         cart = self.db.query(CartModel).filter(
             CartModel.user_id == user_id).first()
         if not cart or not cart.items:

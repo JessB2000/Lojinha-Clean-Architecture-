@@ -10,7 +10,7 @@ class AddProductCartUseCase:
     def __init__(self, db: Session):
         self.db = db
 
-    def addProductCart(self, user_id: int, product_id: int, quantity: int):
+    def add_product_cart(self, user_id: int, product_id: int, quantity: int):
         product = self.db.query(ProductModel).filter(
             ProductModel.id == product_id).first()
         if not product:

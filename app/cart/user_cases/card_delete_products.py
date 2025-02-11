@@ -7,7 +7,7 @@ class RemoveProductCartUseCase:
     def __init__(self, db: Session):
         self.db = db
 
-    def deleteProductCart(self, user_id: int, product_id: int):
+    def delete_product_cart(self, user_id: int, product_id: int):
         cart_item = self.db.query(CartItemModel).join(CartItemModel.cart).filter(
             CartItemModel.product_id == product_id, CartItemModel.cart.has(
                 user_id=user_id)

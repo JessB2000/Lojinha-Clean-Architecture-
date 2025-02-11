@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.infra.database.session import db_get
-from app.user.entity.user import User
+from app.user.interface.adapter.schemas.user_create import UserCreate
+from app.user.interface.adapter.schemas.user_update import UserUpdate
 from app.user.user_cases.user_register import RegisterUserUseCase
 from app.user.user_cases.user_update import UpdateUserUseCase
 from app.user.user_cases.user_delete import DeleteUserUseCase
@@ -12,14 +13,14 @@ router = APIRouter()
 
 
 @router.post("/users")
-def create_user(user: User, db: Session = Depends(db_get)):
+def create_user(user: UserCreate, db: Session = Depends(db_get)):
     register_use_case = RegisterUserUseCase(db)
     new_user = register_use_case.register_user(user.dict())
     return new_user
 
 
 @router.put("/users/{user_id}")
-def update_user(user_id: int, user: User, db: Session = Depends(db_get)):
+def update_user(user_id: int, user: UserUpdate, db: Session = Depends(db_get)):
     update_use_case = UpdateUserUseCase(db)
     updated_user = update_use_case.update_user(user_id, user.dict())
     return updated_user

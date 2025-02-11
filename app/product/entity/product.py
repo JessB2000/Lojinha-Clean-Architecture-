@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from app.frameworks.enum.store_enum import ProductCategory
+from app.infra.enum.store_enum import ProductCategory
 
 
 class Product(BaseModel):

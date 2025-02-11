@@ -1,6 +1,5 @@
 from pydantic import BaseModel, EmailStr, Field
-
-from app.frameworks.enum.store_enum import UserRole
+from app.infra.enum.store_enum import UserRole
 
 
 class User(BaseModel):

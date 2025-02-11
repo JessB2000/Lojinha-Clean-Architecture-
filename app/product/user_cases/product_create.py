@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from app.infra.database.models.product_model import ProductModel
 from app.infra.enum.store_enum import UserRole
+from app.product.interface.adapter.schemas.product_create import ProductCreate
 
 
 class ProductCreateUseCase:
