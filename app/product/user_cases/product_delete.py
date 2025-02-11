@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app.product.entity.product import Product
+from app.infra.database.models.product_model import ProductModel
 from app.infra.enum.store_enum import UserRole
 from fastapi import HTTPException
 
@@ -13,8 +13,8 @@ class ProductDeleteUseCase:
             raise HTTPException(
                 status_code=403, detail="Apenas admin pode deletar produtos")
 
-        product = self.db.query(Product).filter(
-            Product.id == product_id).first()
+        product = self.db.query(ProductModel).filter(
+            ProductModel.id == product_id).first()
 
         if not product:
             raise HTTPException(

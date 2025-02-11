@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app.product.entity.product import Product as ProductModel 
+from app.infra.database.models.product_model import ProductModel
 
 
 class ProductsListUseCase:
