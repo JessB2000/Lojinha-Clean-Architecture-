@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional
-from infra.enum.store_enum import ProductCategory
+from app.infra.enum.store_enum import ProductCategory
 
 
 class ProductCreate(BaseModel):

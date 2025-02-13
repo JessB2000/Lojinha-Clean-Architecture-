@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
-from app.infra.database.models.user_model import User as UserModel
+from app.user.infra.database.models.user_model import UserModel
 from app.infra.enum.store_enum import UserRole
-from app.infra.security.hashing import HashUser
+from app.user.infra.security.hashing import HashUser
 
 
 class RegisterUserUseCase():
@@ -17,12 +17,13 @@ class RegisterUserUseCase():
 
         hashed_password = HashUser.bcrypt(user_data['password'])
 
+        user_role = UserRole[user_data['type_user']]  
+
         new_user = UserModel(
             username=user_data['username'],
             email=user_data['email'],
-            hashed_password=hashed_password,
-            role=UserRole.USER if user_data.get(
-                'is_admin', False) is False else UserRole.ADMIN
+            password=hashed_password,
+            type_user=user_role
         )
 
         self.db.add(new_user)

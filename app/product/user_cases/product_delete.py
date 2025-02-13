@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app.infra.database.models.product_model import ProductModel
+from app.product.infra.database.models.product_model import ProductModel
 from app.infra.enum.store_enum import UserRole
 from fastapi import HTTPException
 

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from app.infra.database.session import db_get
-from app.infra.web.dependencies import get_current_user
+from app.cart.infra.database.session import db_get
+from app.user.infra.web.dependencies import get_current_user
 from app.cart.interface.adapter.schemas.cart_item_add import CartAddItem
 from app.cart.interface.adapter.schemas.cart_item_update import CartUpdateItem
 from app.cart.user_cases.cart_add_products import AddProductCartUseCase

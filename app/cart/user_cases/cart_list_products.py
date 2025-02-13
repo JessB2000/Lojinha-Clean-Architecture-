@@ -1,6 +1,5 @@
-# app/use_cases/cart/view_cart.py
 from sqlalchemy.orm import Session
-from app.infra.database.models.cart_model import CartModel
+from app.cart.infra.database.models.cart_model import CartModel
 from fastapi import HTTPException
 
 

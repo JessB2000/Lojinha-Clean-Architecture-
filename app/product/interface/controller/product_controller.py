@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
-from app.infra.database.session import db_get
+from app.product.infra.database.session import db_get
 from app.product.user_cases.product_create import ProductCreateUseCase
 from app.product.user_cases.product_lists import ProductsListUseCase
 from app.product.user_cases.product_update import ProductUpdateUseCase
 from app.product.user_cases.product_delete import ProductDeleteUseCase
-from app.infra.web.dependencies import get_current_user
+from app.user.infra.web.dependencies import get_current_user
 from app.product.interface.adapter.schemas.product_create import ProductCreate
 from app.product.interface.adapter.schemas.product_update import ProductUpdate
 from app.infra.enum.store_enum import ProductCategory

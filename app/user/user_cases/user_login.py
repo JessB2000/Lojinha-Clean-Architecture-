@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
-from app.infra.database.models.user_model import UserModel
-from app.infra.security.hashing import HashUser
-from app.infra.security.token_manager import create_access_token
+from app.user.infra.database.models.user_model import UserModel
+from app.user.infra.security.hashing import HashUser
+from app.user.infra.security.token_manager import create_access_token
 
 
 class LoginUserUseCase():
@@ -16,7 +16,7 @@ class LoginUserUseCase():
             raise HTTPException(
                 status_code=401, detail="Credenciais inválidas")
 
-        if not HashUser.verify(user.hashed_password, password):
+        if not HashUser.verify(user.password, password):
             raise HTTPException(
                 status_code=401, detail="Credenciais inválidas")
 

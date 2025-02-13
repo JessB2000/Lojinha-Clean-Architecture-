@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
-from app.infra.database.models.user_model import UserModel
-from app.infra.security.hashing import HashUser
+from app.user.infra.database.models.user_model import UserModel
+from app.user.infra.security.hashing import HashUser
 
 
 class UpdateUserUseCase():
@@ -18,7 +18,7 @@ class UpdateUserUseCase():
             user_to_update.email = user_data["email"]
 
         if user_data.get("password"):
-            user_to_update.hashed_password = HashUser.bcrypt(
+            user_to_update.password = HashUser.bcrypt(
                 user_data["password"])
 
         self.db.commit()

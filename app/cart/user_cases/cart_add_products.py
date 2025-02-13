@@ -1,8 +1,7 @@
-# app/use_cases/cart/add_product_to_cart.py
 from sqlalchemy.orm import Session
-from app.infra.database.models.cart_model import CartModel
-from app.infra.database.models.cartitem_model import CartItemModel
-from app.infra.database.models.product_model import ProductModel
+from app.cart.infra.database.models.cart_model import CartModel
+from app.cart.infra.database.models.cartitem_model import CartItemModel
+from app.product.infra.database.models.product_model import ProductModel
 from fastapi import HTTPException
 
 

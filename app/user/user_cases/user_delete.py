@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
-from app.infra.database.models.user_model import UserModel
+from app.user.infra.database.models.user_model import UserModel
 from app.infra.enum.store_enum import UserRole
 
 

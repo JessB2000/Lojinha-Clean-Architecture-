@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app.infra.database.models.cartitem_model import CartItemModel
+from app.cart.infra.database.models.cartitem_model import CartItemModel
 from fastapi import HTTPException
 
 
